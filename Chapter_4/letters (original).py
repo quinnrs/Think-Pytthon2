@@ -116,7 +116,7 @@ def serif(t, n, height):
     """ makes a vertical line to the given height then a horizontal line n and return to the vertical line """
     lt(t)
     fdlt(t, height)
-    fdbk(t, n/2)
+    fdbk(t, n)
     
 def hook_l(t, n):
     """ makes a vertical line to the given height and an arc with the 
@@ -222,85 +222,14 @@ def draw_h(t, n):
     fdbk(t, 3.5*n)
     hump(t, n, angle=-180) #t\return and spacing
     lt(t)
-    skip(t, 2*n)
-
-def draw_i(t, n):
-    lt(t)
-    fd(t, 3/2*n)
-    skip(t, n)
-    circle(t, r=n/4) # now return and space
-    rt(t, 180)
-    skip(t, 5/2*n)
-    lt(t)
-    skip(t, n/2)
-
-def draw_j(t,n):
-    skip(t, 2*n)
-    lt(t)
-    fd(t, 3/2*n)
-    skip(t, n)
-    circle(t, r=n/4)
-    rt(t, 180)
-    skip(t, n)
-    fdrt(t, 3/2*n)
-    hook_r(t,n) #now return and spacing
-    lt(t, 180)
-    skip(t, 4*n)
-
-def draw_k(t, n):
-    lt(t)
-    fdrt(t, n, 135)
-    fdbk(t, 1.8*n)
-    lt(t)
-    fdbk(t, 1.8*n)
-    lt(t, 45)
-    fdbk(t, 5/2*n) # now return and spacing
-    lt(t, 180)
-    fdlt(t, n)
-    skip(t, 3*n)
-    
-def draw_l(t, n):
-    serif(t, n, height=7/2*n) 
-    #now return and spacing
-    lt(t)
-    fdlt(t, 3.5*n)
-    skip(t, 3/2*n)
-
-def draw_m(t, n):
-    lt(t)
-    fdbk(t, 2*n)
-    hump(t, n, -180)
-    rt(t, 180)
-    hump(t, n, -180) #now return and spacing
-    lt(t)
-    skip(t, 3/2*n)
-
-def draw_n(t, n):
-    lt(t)
-    fdbk(t, 2*n)
-    hump(t, n, -180) #now return and spacing
-    lt(t)
-    skip(t, n)
-
-def draw_o(t, n):
-    skip(t, n)
-    fd(t, n/2)
-    circle(t, r=n) #now space
-    skip(t, 2*n)
-
-def draw_p(t, n):
-    hump(t, n, 180)
-    lt(t)
-    fdbk(t, 3.5*n) #return and spacing
-    skip(t, 2*n)
-    lt(t)
     skip(t, 5/2*n)
 
-
+# need i, j, k, l, m, n o, p
+   
 def draw_q(t, n):
     skip(t, (3/2)*n)
     rt(t, angle=180)
-    hump(t, n, angle=-180) 
+    hump(t, n, angle=-180)
     rt(t)
     fd(t, 4*n)
     hook_l(t, n/2) # return and spacing
@@ -316,33 +245,19 @@ def draw_r(t, n):
     arc(t, n, -135) # return and spacing
     rt(t, 135)
     lt(t)
-    skip(t, 2*n)
+    skip(t, 3/2*n)
     lt(t)
     skip(t, 3/2*n)
 
 def draw_s(t, n):
     fd(t, n)
-    hump(t, 5*n/8, 180)
+    hump(t, n/3, 180)
     fd(t, n/4)
-    hump(t, 5*n/8, -180)
+    hump(t, n/2, -180)
     fdrt(t, n, 90) # return and spacing
-    skip(t, n) #
-    lt(t)
-    skip(t, 2*n)
-
-def draw_t(t, n):
-    lt(t)
-    skip(t, n)
-    rt(t)
-    fdbk(t, 2*n)
-    fdlt(t, n)
-    fdrt(t, n, 180)
-    fdrt(t, 2*n)
-    hook_l(t, n)# now return and spacing
-    lt(t)
     skip(t, 2*n)
     lt(t)
-    skip(t, 3*n)
+    skip(t, 5/2*n)
 
 def draw_u(t,n):
     lt(t)
@@ -373,9 +288,9 @@ def draw_w(t, n):
     fdlt(t, 2.2*n, 120)
     fdrt(t, 2.2*n, 120)# return and space
     rt(t, 30)
-    skip(t, n)
+    skip(t, 2*n)
     lt(t)
-    skip(t, n)
+    skip(t, 2*n)
 
 def draw_x(t, n):
     lt(t, 45)
@@ -397,29 +312,23 @@ def draw_y(t, n):
     arc(t, n, -135) # return and spacing
     rt(t, 135)
     skip(t, 4*n)
-    hollow(t, 5/2*n)# 
-# 
-def draw_z(t, n):# 
-    lt(t)# 
-    skip(t, 2*n)# 
-    rt(t)# 
-    fdrt(t, 2*n, 135)# 
-    fdlt(t, 2.5*n, 135)# 
-    fd(t, 2*n)# 
-    skip(t, n)# 
-# 
-def draw_space(t,n):# 
-    fd(t, n=" ")# 
-# 
-# 
-"""# 
-def dra#w_m(t, n)# 
-def dra#w_n(t, n)# 
-def dra#w_p(t, n)# 
-## 
-## 
-## 
-## 
+    hollow(t, 5/2*n)
+
+def draw_z(t, n):
+    lt(t)
+
+def draw_space(t,n):
+    fd(t, n=" ")
+
+
+"""
+def dra#w_m(t, n)
+def dra#w_n(t, n)
+def dra#w_p(t, n)
+#
+#
+#
+#
 #
 end of #specific letters """
 #
@@ -442,25 +351,16 @@ if __name__ == "__main__":
 # draw_f(bob, n=5)
 # draw_g(bob, n=5)
 # draw_h(bob, n=5)
-# draw_i(bob, n=5)
-# draw_j(bob, n=5)
-# draw_k(bob, n=5)
-# draw_l(bob, n=5)
-# draw_m(bob, n=5)
-draw_n(bob, n=5)
-draw_o(bob, n=5)
-draw_p(bob, n=5)
-draw_q(bob, n=5)
-draw_r(bob, n=5)
-# draw_s(bob, n=5)
+# draw_q(bob, n=5)
+# draw_r(bob, n=5)
 # draw_t(bob, n=5)
 # draw_u(bob, n=5)
 # draw_v(bob, n=5)
 # draw_w(bob, n=5)
 # draw_x(bob, n=5)
 # draw_y(bob, n=5)
-# draw_z(bob, n=5)
-
+# draw_v(bob, n=5)
+# draw_w(bob, n=5)
 
 turtle.mainloop() # prints all code abpve to terminal   
 

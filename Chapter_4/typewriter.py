@@ -91,7 +91,6 @@ teleport(bob, -180, 150)
 
 # tell world to call keypress when the user presses a key
 screen = bob.getscreen()
-
 for char in string.ascii_lowercase:
     screen.onkey(presser(char), char)
 
