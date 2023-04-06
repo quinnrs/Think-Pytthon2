@@ -83,10 +83,15 @@ def presser(char):
     return func
 
 
+if __name__ == "__main__":
+
+    #create and position the turtle
+    size = 20
+    bob = turtle.Turtle()  
 # create and position the turtle
-size = 20
-bob = turtle.Turtle()
-bob.busy = False
+# size = 20
+# bob = turtle.Turtle()
+# bob.busy = False
 teleport(bob, -180, 150)
 
 # tell world to call keypress when the user presses a key
@@ -95,6 +100,8 @@ for char in string.ascii_lowercase:
     screen.onkey(presser(char), char)
 
 screen.onkey(carriage_return, 'Return')
+
+
 
 screen.listen()
 turtle.mainloop()

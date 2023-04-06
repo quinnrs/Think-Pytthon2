@@ -28,8 +28,6 @@ base start position:    lower left
 return position:    lower right + 
 """
 
-
-
 # basic moves where r denotes right, l denotes left
 def fd(t, length):
     t.fd(length)
@@ -51,7 +49,7 @@ def pu(t):
 
 # define combo moves
 def fdlt(t,n, angle = 90):
-    """ move forward anf turn left   """
+    """ move forward and turn left   """
     fd(t, n)
     lt(t, angle)
 
@@ -76,8 +74,6 @@ def skip(t, n):
 # define basic shapes
 def stub(t, n, angle):
     """ makes a short line to support an arc"""
-  
-
 
 def hump(t, n, angle):
     """ draw an 180 degree arc counterclockwise 
@@ -91,7 +87,7 @@ def hollow(t, n):
     """move the turtle vertically and leave it at the top, facing right
           # use for top-left starting position    """
     lt(t)
-    skip(t, n)
+    skip(t, 4*n)
     rt(t)
 
 def post(t, n):
@@ -113,10 +109,11 @@ def diagonal(t, n, angle):
     fdbk(t,n)
 
 def serif(t, n, height):
-    """ makes a vertical line to the given height then a horizontal line n and return to the vertical line """
+    """ makes a vertical line to the given height then a horizontal
+        line nwide,  then return to the vertical line """
     lt(t)
     fdlt(t, height)
-    fdbk(t, n/2)
+    fdbk(t, n)
     
 def hook_l(t, n):
     """ makes a vertical line to the given height and an arc with the 
@@ -142,8 +139,19 @@ def hook_r(t, n):
     rt(t, angle=180)
     pd(t)
 
+def baseline_return(t, n, angle):
+    """ returns to baseline with with turtle in vertical position"""
+    pu(t)
+    rt(t, angle)
+    fd(t, n)
+
+def next_letter(t,n):
+    """ sets correct spacing for next letter with turtle facing left """
+    lt(t, 90)
+    skip(t, n)
+
 """
-This functions are use as an aid to write code for any letter
+This functions are use as avisual  aid to write code for any letter
 by drawing a horizontal line at the top of each frame, then 
 returing the pen to either the bottom left with the pen facing up
 
@@ -170,59 +178,73 @@ def draw_b(t, n):
     fdbk(t, 4*n)
     rt(t, angle=90)
     hump(t, n, angle=180) # return and spacing
-    lt(t, angle=90)
-    fdlt(t, 2*n, angle=90)
-    skip(t, (2)*n)
-
+    baseline_return(t, 2*n, 270)
+    next_letter(t, 3*n)
+    
 def draw_c(t, n):
-    skip(t, (3/2)*n)
+    skip(t, n)
     rt(t, angle=180)
     hump(t,n, angle=-180) # return and spacing 
-    rt(t)
-    skip(t, 2*n) # vertical alignment
-    lt(t)
+    baseline_return(t, 2*n , 90)
+    next_letter(t, n)
+    # rt(t)
+    # skip(t, 2*n) # vertical alignment
+    # lt(t)
 
 def draw_d(t, n):
-    skip(t, n/2)
-    draw_c(t, n)
+    skip(t, n)
     lt(t)
-    fdbk(t, 4*n) #return and spaceing
-    rt(t)
-    fd(t, n)
+    fdbk(t, 4*n)
+    lt(t, angle=90)
+    hump(t,n, angle=-180)
+    baseline_return(t, n, angle=90)
+    next_letter(t, n)
+    # skip(t,n)
+    
 
 def draw_e(t, n):
-    hollow(t=bob, n=5)
     fdlt(t, 2*n)
-    arc(t, n, angle=270)
+    arc(t, r=n, angle=270)
     fd(t,n)  # return and spacing
     skip(t, n)
 
 def draw_f(t, n):
-    beam(t, 3/2*n, height=n/4)
+    # beam(t, 3/2*n, height=1)
+    beam(t, n/2, height=1)
     lt(t)
     fd(t, 5/2*n)
-    hump(t,n, angle=-180)#return and spacing
-    skip(t, 5/2*n)
-    lt(t, angle=90)
-    skip(t, n)
+    hump(t, n/2, angle=-180)#return and spacing
+    # hook_r(t, n)
+    # hook_l(t, n)
+    baseline_return(t, n/2, angle=0)
+    next_letter(t, n/2)
+    # skip(t, 5/2*n)
+    # lt(t, angle=90)
+    # skip(t, n)
 
 def draw_g(t, n):
     skip(t, (3/2)*n)
     rt(t, angle=180)
     hump(t, n, angle=180)
     lt(t)
-    fdbk(t, 2*n)
-    rt(t, angle=-90)
-    hook_r(t, n/2) # return and spacing
+    fd(t, 2*n)
     rt(t, angle=180)
+    fd(t, 3*n)
+    # hook_r(t, n/2) # return and spacing
+    hump(t, n/2, angle=-180)#return and spacing
+    skip(t, n)
+    rt(t)
     skip(t, 2*n)
 
 def draw_h(t, n):
     lt(t)
     fdbk(t, 3.5*n)
-    hump(t, n, angle=-180) #t\return and spacing
+    hump(t, n, angle=-180) # return and spacing
     lt(t)
-    skip(t, 2*n)
+    skip(t,n)
+    # baseline_return(t, -2*n, angle=0)
+    # next_letter(t, n)
+
 
 def draw_i(t, n):
     lt(t)
@@ -230,9 +252,14 @@ def draw_i(t, n):
     skip(t, n)
     circle(t, r=n/4) # now return and space
     rt(t, 180)
-    skip(t, 5/2*n)
-    lt(t)
-    skip(t, n/2)
+    baseline_return(t, 5/2*n, angle=0)
+    # baseline_return(t, 3*n, angle=0)
+    next_letter(t, -n)
+    # skip(t, n=-1)
+    # skip(t, n/2)
+    # lt(t)
+    # skip(t, n/2)
+
 
 def draw_j(t,n):
     skip(t, 2*n)
@@ -242,10 +269,11 @@ def draw_j(t,n):
     circle(t, r=n/4)
     rt(t, 180)
     skip(t, n)
-    fdrt(t, 3/2*n)
-    hook_r(t,n) #now return and spacing
+    # fdrt(t, 3*n)
+    fdrt(t, 2*n)
+    hook_r(t,n/2) #now return and spacing
     lt(t, 180)
-    skip(t, 4*n)
+    skip(t, 2*n)
 
 def draw_k(t, n):
     lt(t)
@@ -257,14 +285,14 @@ def draw_k(t, n):
     fdbk(t, 5/2*n) # now return and spacing
     lt(t, 180)
     fdlt(t, n)
-    skip(t, 3*n)
+    skip(t, 2*n)
     
 def draw_l(t, n):
     serif(t, n, height=7/2*n) 
     #now return and spacing
     lt(t)
-    fdlt(t, 3.5*n)
-    skip(t, 3/2*n)
+    fdlt(t, 7/2*n)
+    skip(t, n)
 
 def draw_m(t, n):
     lt(t)
@@ -273,7 +301,7 @@ def draw_m(t, n):
     rt(t, 180)
     hump(t, n, -180) #now return and spacing
     lt(t)
-    skip(t, 3/2*n)
+    skip(t, n)
 
 def draw_n(t, n):
     lt(t)
@@ -283,10 +311,10 @@ def draw_n(t, n):
     skip(t, n)
 
 def draw_o(t, n):
-    skip(t, n)
+    # skip(t, n)
     fd(t, n/2)
-    circle(t, r=n) #now space
-    skip(t, 2*n)
+    circle(t, r=n) #n ow space
+    skip(t, 3/2*n)
 
 def draw_p(t, n):
     hump(t, n, 180)
@@ -294,55 +322,53 @@ def draw_p(t, n):
     fdbk(t, 3.5*n) #return and spacing
     skip(t, 2*n)
     lt(t)
-    skip(t, 5/2*n)
-
+    skip(t, 2*n)
 
 def draw_q(t, n):
     skip(t, (3/2)*n)
     rt(t, angle=180)
-    hump(t, n, angle=-180) 
+    hump(t, n, angle=-180)
     rt(t)
     fd(t, 4*n)
-    hook_l(t, n/2) # return and spacing
-    lt(t, angle=180)
-    fd(t, 2*n)
+    hump(t, n/2, angle=180)
+    baseline_return(t, 2*n, angle=0)
+    # baseline_return(t, n, angle=- 90)
     rt(t)
-    skip(t, 2*n)
+    skip(t, n)
 
 def draw_r(t, n):
     lt(t)
     fdbk(t, 2*n)
     fd(t, n)
     arc(t, n, -135) # return and spacing
-    rt(t, 135)
-    lt(t)
-    skip(t, 2*n)
-    lt(t)
-    skip(t, 3/2*n)
-
+    baseline_return(t, 3/2*n, angle=45)
+    baseline_return(t, 2*n, angle=45)
+    baseline_return(t, 7/4*n, angle=45)
+    next_letter(t, n)
+    
 def draw_s(t, n):
     fd(t, n)
-    hump(t, 5*n/8, 180)
+    hump(t, n/2, 180)
     fd(t, n/4)
-    hump(t, 5*n/8, -180)
+    hump(t, n/2, -180)
     fdrt(t, n, 90) # return and spacing
-    skip(t, n) #
-    lt(t)
     skip(t, 2*n)
+    lt(t)
+    skip(t, n)
 
 def draw_t(t, n):
     lt(t)
-    skip(t, n)
+    skip(t, 3/2*n)
     rt(t)
     fdbk(t, 2*n)
     fdlt(t, n)
     fdrt(t, n, 180)
     fdrt(t, 2*n)
     hook_l(t, n)# now return and spacing
-    lt(t)
+    lt(t, 180)
     skip(t, 2*n)
-    lt(t)
-    skip(t, 3*n)
+    # lt(t)
+    # skip(t, 3*n)
 
 def draw_u(t,n):
     lt(t)
@@ -352,7 +378,6 @@ def draw_u(t,n):
     rt(t, 180)
     fdlt(t,3/2*n, 90)# return and space
     skip(t, n) 
-
 
 def draw_v(t, n):
     lt(t)
@@ -372,10 +397,12 @@ def draw_w(t, n):
     fdrt(t, 2.2*n, 120)
     fdlt(t, 2.2*n, 120)
     fdrt(t, 2.2*n, 120)# return and space
-    rt(t, 30)
-    skip(t, n)
-    lt(t)
-    skip(t, n)
+    baseline_return(t, n*2, angle =30)
+    next_letter(t,n)
+    # rt(t, 30)
+    # skip(t, 2*n)
+    # lt(t)
+    # skip(t, 2*n)
 
 def draw_x(t, n):
     lt(t, 45)
@@ -395,11 +422,13 @@ def draw_y(t, n):
     rt(t, 180)
     fd(t, 3*n)
     arc(t, n, -135) # return and spacing
-    rt(t, 135)
-    skip(t, 4*n)
-    hollow(t, 5/2*n)# 
-# 
-def draw_z(t, n):# 
+    rt(t, 45)
+    # skip(t, 5/2*n)
+    skip(t, 2*n)
+    rt(t)
+    skip(t, 3*n)
+
+def draw_z(t, n):
     lt(t)# 
     skip(t, 2*n)# 
     rt(t)# 
@@ -407,33 +436,18 @@ def draw_z(t, n):#
     fdlt(t, 2.5*n, 135)# 
     fd(t, 2*n)# 
     skip(t, n)# 
-# 
-def draw_space(t,n):# 
-    fd(t, n=" ")# 
-# 
-# 
-"""# 
-def dra#w_m(t, n)# 
-def dra#w_n(t, n)# 
-def dra#w_p(t, n)# 
-## 
-## 
-## 
-## 
-#
-end of #specific letters """
-#
-#
-#
-#
 
+def draw_space(t,n):
+    fd(t, n=" ")
+
+
+"""  end of #specific letters """
 
 
 if __name__ == "__main__":
     #create and position the turtle
     size = 20
     bob = turtle.Turtle()
-
 # draw_a(bob, n=5)
 # draw_b(bob, n=5)
 # draw_c(bob, n=5)
@@ -442,16 +456,8 @@ if __name__ == "__main__":
 # draw_f(bob, n=5)
 # draw_g(bob, n=5)
 # draw_h(bob, n=5)
-# draw_i(bob, n=5)
-# draw_j(bob, n=5)
-# draw_k(bob, n=5)
-# draw_l(bob, n=5)
-# draw_m(bob, n=5)
-draw_n(bob, n=5)
-draw_o(bob, n=5)
-draw_p(bob, n=5)
-draw_q(bob, n=5)
-draw_r(bob, n=5)
+# draw_q(bob, n=5)
+# draw_r(bob, n=5)
 # draw_s(bob, n=5)
 # draw_t(bob, n=5)
 # draw_u(bob, n=5)
@@ -461,8 +467,14 @@ draw_r(bob, n=5)
 # draw_y(bob, n=5)
 # draw_z(bob, n=5)
 
+    # for f in [draw_a, draw_b, draw_c, draw_d, draw_e, draw_f, draw_g]:
+    # for f in [draw_g, draw_h, draw_i, draw_j, draw_k, draw_l, draw_m]:
+    # for f in [draw_m, draw_n, draw_o, draw_p, draw_q, draw_r,draw_s, draw_t]:
+    for f in [draw_t, draw_u, draw_v, draw_w, draw_x, draw_y, draw_z, draw_a]:
+        f(bob, size)
+        skip(bob, size)
 
-turtle.mainloop() # prints all code abpve to terminal   
+turtle.mainloop() # prints all code above to terminal   
 
 
 
