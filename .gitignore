@@ -1,3 +1,7 @@
+# ignore debugging files
+polygon.py
+typewriter.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
