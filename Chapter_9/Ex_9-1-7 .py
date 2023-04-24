@@ -164,59 +164,60 @@ print(is_abecedarian(word = "able"))
 print("\nEx_9-7")
 
 """
-write a program to search a list of words to find a word from that contains three consecutive double letters.
+write a program to search a list of words to find a word from that contains 
+three consecutive double letters.
 
 input: a list of words
         
 return: any word with three consecutive double letters
 """
 
+"""   
+write a function that returns True when a word contains three double letters 
 
+input (word)
 
-
+output: True or False
 """
-fin = open("Chapter_9/words.txt")
-word_count = 0
-for line in fin:
-    word = line.strip()
-
-    if three_double_letters(word) == True:
-        word_count += 1
-        print(word_count, word)
-print("total words three double letter = ", word_count)
-"""
-"""
-write a program to count the  number of concecutive (double) letters in a word
-
-input: word(string)
-        
-return: number(int) of double letters
-"""
-def count_double_letters(word):
-    counter = 1
+def three_double_letters(word):
+    double_counter = 0
     i = 0
-    # print(i, counter)
     while i < len(word)-1:
-        # test if concesutive letters are equal 
+        # print(i, double_counter)
+        # print(word[i], word[i+1]) 
         if word[i] != word[i+1]:
-            counter += 1
-        i += 1 
-    if counter == len(word):
-        return 0
-    return len(word) - counter
+            double_counter += 1
+            if double_counter == 3:
+                return True  # confirms 3 double letter pairs
+            i += 2 
+        # print(i, double_counter)
 
-print(count_double_letters(word="committee"))
-print(count_double_letters(word="dog"))
+        # unique_letters = double_counter
+        # paired_letters = len(word) - double_counter
+        # print("paired_letters = ",paired_letters)
+        else:   # test if double letters are consecutive
+            # if double_counter == 3:
+            i = i + 1 - (2 * double_counter)
+            double_counter = 0
+            #return True
+    return False
 
-fin = open("Chapter_9/words.txt")
-word_count = 0
-for line in fin:
-    word = line.strip()
+print(three_double_letters(word="committee"))
+print(three_double_letters(word="bookkeeper"))
 
-    if count_double_letters(word) >= 3:
-        word_count += 1
-        print(word_count, word)
-print("total words three double letter = ", word_count)
+def find_triple_double_letters():
+    """Reads a word list and prints words with triple double letters."""  
+    fin = open("Chapter_9/words.txt")
+    word_count = 0
+    for line in fin:
+        word = line.strip()
+        # if three_double_letters(word):
+        if three_double_letters(word) == True:
+            word_count += 1
+            print(word_count, word)
+          # print(word)
+    """  ERROR  if statement does not sort correctly """
+# find_triple_double_letters()
 
 """ here are four words with three consecutive double letters
 9 bookkeeper
