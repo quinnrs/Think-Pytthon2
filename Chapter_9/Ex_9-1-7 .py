@@ -215,9 +215,10 @@ def find_triple_double_letters():
         if three_double_letters(word) == True:
             word_count += 1
             print(word_count, word)
-          # print(word)
-    """  ERROR  if statement does not sort correctly """
-# find_triple_double_letters()
+            # print(word)
+    """  ERROR  neither version of if statement sorts correctly 
+        99069 words printed, expected ither 46 or 4"""
+find_triple_double_letters()
 
 """ here are four words with three consecutive double letters
 9 bookkeeper

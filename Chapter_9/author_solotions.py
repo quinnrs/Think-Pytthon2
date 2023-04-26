@@ -155,7 +155,9 @@ print()
 
 print("\nEx_9-9")
 """
-how often can two people have ages that are reverse - person 1 is 37 wnen person 2 is 73? If this has happend six time already, how old is the younger person?
+how often can two people have ages that are reversed - person 1 is 37 wnen 
+person 2 is 73? If this has happend six time already, how old is the
+younger person?
 """
 def str_fill(i, n):
     """Returns i as a string with at least n digits.
@@ -165,6 +167,7 @@ def str_fill(i, n):
     """
     return str(i).zfill(n)
 
+# print(str_fill(i=4, n=3))
 
 def are_reversed(i, j):
     """Checks if i and j are the reverse of each other.
@@ -174,6 +177,8 @@ def are_reversed(i, j):
     """
     return str_fill(i, 2) == str_fill(j, 2)[::-1]
 
+# print(are_reversed(i=1, j=10))
+# print(are_reversed(i=11, j=30))
 
 def num_instances(diff, flag=False):
     """Counts the number of palindromic ages.
@@ -196,6 +201,7 @@ def num_instances(diff, flag=False):
         if mother > 120:
             break
         daughter = daughter + 1
+    
     return count
     
 
@@ -219,7 +225,5 @@ check_diffs()
 print()
 print('daughter  mother')
 num_instances(18, True)
-
-
 
 
