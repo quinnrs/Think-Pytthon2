@@ -1,6 +1,10 @@
 # ignore debugging files
 polygon.py
 typewriter.py
+working.py
+Ex_9-1-6.py
+fix_test.py
+author_colutions.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
