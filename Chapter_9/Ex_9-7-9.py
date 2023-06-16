@@ -161,8 +161,8 @@ def count_palindrome_ages(delta, flag = False):
         # if are_palindrome_ages(younger, older): # did not work
             counter += 1
             # print(younger, older) # debugging
-            # if flag: 
-                # print(younger, older)
+            if flag: 
+                print(younger, older)
                 # print("are not reversed")
         if older > 114:
             break
@@ -180,12 +180,12 @@ def check_results():
         
     input:  delta -int
     """
-    delta = 10
-    while delta < 60:
+    delta = 15
+    while delta < 65:
         n = count_palindrome_ages(delta)
         if n > 0:  #prints when n = 0 ??? why???
             print(delta, n)
         delta += 1
 
 print("delta  #instances")
-check_results() #runs as expected except for printing when n = 
+check_results() # runs as expected
