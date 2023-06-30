@@ -30,7 +30,7 @@ t1 = my_word_list1()
 print(len(t1))
 print(t1[:10])
 elapsed_time =  1000 * (time.time() - start_time)
-print (elapsed_time,  'miliseconds' )
+print (elapsed_time,  'millisec' )
 """ t1 elapsed time = 11.3 milisec
     proaably slower because it modifies the original list """
 def my_word_list2():  # use + operator
@@ -48,7 +48,7 @@ print("\n")
 print(len(t2))
 print(t2[:10])
 elapsed_time = 1000 * (time.time() - start_time)
-print (elapsed_time, 'miliseconds')
+print (elapsed_time, 'millisec')
 """ t2 elapsed time = 2.2 milisec using + operator
     probably faster because it creates a new list """
 print("\nEx_10-10")
@@ -230,15 +230,6 @@ s = "help"
 print("rev_pair = ", s, rev_word(s))
 """
 
-print("\nEx_10-12")
-""" write a function that finds all pairs of words in a list of words 
-    that interlock.
-        example "shoe" and "cold" are interocked to form "schooled"
-            by taking alternating letters from each word
-    input:  list of strings 
-            word - a string
-    output: list of pairs of interlocked words
-"""
 def make_word_list(): 
     word_list = []
     fin = open("Chapter_9/words.txt")
@@ -264,21 +255,8 @@ def in_bisect(word_list, word):
         10 // 3  output = 3
     """
 
-    if len (word_list) == 0:
-        return False   # empty list
-    
-    i = len(word_list) // 2  # uses total list
-    # print(i)   # used for debugging
-    # k = len(word_list) // 2  # documentation uses i not k
-    if word_list[i] == word:
-        return True
-    
-    if word_list[i] > word:
-        # search the first half
-        return in_bisect(word_list[:i], word)
-    else: 
-        # search the second half
-        return in_bisect(word_list[i + 1: ], word)
+
+
 
 print("\nEx_10-12")
 """ write a function that finds all pairs of words in a list of words 
