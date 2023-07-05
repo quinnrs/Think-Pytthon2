@@ -1,4 +1,4 @@
-import time
+
 
 """  Start with a list of words as strings, find eash word that meets
         these conditions:
@@ -97,5 +97,4 @@ print(f"\nclass word_dict is ", type(word_dict))
 print(f"len(word_dict = ",len(word_dict))
 for word in word_dict:
     if check_word(word, word_dict, phonetic):
-        # print(check_word)
         print(word, word[1:], word[0] + word[2:])
